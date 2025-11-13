@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Sundarbans House - IIT Madras BS</title>
+  <link rel="icon" href="images/sundarbans2 (1).png" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* HEADER - same across all pages */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #0a0a0a;
+      padding: 12px 40px;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 55px;
+      border-radius: 8px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #f0c04e;
+      margin-left: 10px;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: #f0c04e;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 140px 20px;
+      background: url('images/Mountain.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .hero h2, .hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: 40px;
+      color: #f0c04e;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 750px;
+      margin: auto;
+      color: #e6e6e6;
+    }
+
+    /* ABOUT SECTION */
+    #about {
+      padding: 70px 45px;
+      width: 85%;
+      margin: 60px auto;
+      background-color: #0f0f0f;
+      border-radius: 12px;
+      box-shadow: 0 0 22px rgba(255, 215, 0, 0.1);
+    }
+
+    #about h2 {
+      text-align: center;
+      color: #f0c04e;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .about-block {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .about-block h3 {
+      color: #f0c04e;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .about-block p {
+      color: #ccc;
+      max-width: 900px;
+      margin: auto;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .about-card {
+      background-color: #111;
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid #222;
+      transition: .3s;
+    }
+
+    .about-card h4 {
+      margin-bottom: 10px;
+      color: #f0c04e;
+    }
+
+    .about-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 18px rgba(240, 192, 78, 0.3);
+    }
+
+    blockquote {
+      font-style: italic;
+      color: #f0c04e;
+      border-left: 3px solid #f0c04e;
+      padding-left: 18px;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    .houses-section {
+      margin-top: 70px;
+      text-align: center;
+    }
+
+    .houses-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .house-item {
+      background-color: #111;
+      border: 1px solid #333;
+      padding: 12px 0;
+      border-radius: 10px;
+      color: #f0c04e;
+      transition: .3s;
+    }
+
+    .house-item:hover {
+      transform: scale(1.06);
+      background-color: #1b1b1b;
+    }
+
+    .community-section {
+      margin-top: 70px;
+      text-align: center;
+    }
+
+    .link-btn {
+      background: linear-gradient(90deg, #f0c04e, #a97925);
+      color: #000;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .link-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(240, 192, 78, 0.45);
+    }
+
+    /* FOOTER - same across all pages */
+    footer {
+      text-align: center;
+      padding: 35px;
+      background-color: #0a0a0a;
+      color: #888;
+      border-top: 1px solid #222;
+      margin-top: 80px;
+    }
+
+    footer a { color: #f0c04e; }
+    footer a:hover { text-decoration: underline; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .houses-grid { grid-template-columns: repeat(2, 1fr); }
+      #about { width: 92%; padding: 40px 25px; }
+      .hero h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div style="display:flex;align-items:center;">
+      <img src="images/sundarbans2 (1).png" alt="Sundarbans Logo"/>
+      <h1>Sundarbans</h1>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="clubs.html">Clubs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="team.html">Team</a>
+      <a href="#">Resources</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Sundarbans House, IIT Madras</h2>
+    <p>Meet people who challenge you, support you, and inspire you.</p>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Sundarbans House</h2>
+
+    <div class="about-block">
+      <h3>Why It Was Created</h3>
+      <p>Sundarbans exists so students don’t feel like they’re studying alone in an online program. You are part of a house, a real community, not a database entry.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h4>Regional Meetups</h4>
+        <p>Plan trips, discover new places, meet offline, hang out, and make unforgettable memories through fun activities together.</p>
+      </div>
+
+      <div class="about-card">
+        <h4>Regional Groups</h4>
+        <p>Every region has its own group, making it easy for students to connect with nearby communities, interact with others, and grow their network.</p>
+      </div>
+
+      <div class="about-card">
+        <h4>Events & Engagement</h4>
+        <p>Contests, hackathons, challenges, club activities. Learn + contribute + grow.</p>
+      </div>
+
+      <div class="about-card">
+        <h4>Peer Support & Diversity</h4>
+        <p>A mix of different experiences, cultures, and skills. Students support each other, share insights, and build a community where everyone feels included.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      "Sundarbans House creates a space for connection, collaboration, and community.”  
+    </blockquote>
+
+    <!-- Houses -->
+    <div class="houses-section">
+      <h3>Other Houses in the IITM BS Programme</h3>
+
+      <div class="houses-grid">
+        <div class="house-item">Bandipur</div> <div class="house-item">Corbett</div>
+        <div class="house-item">Gir</div>      <div class="house-item">Kanha</div>
+
+        <div class="house-item">Kaziranga</div> <div class="house-item">Nallamala</div>
+        <div class="house-item">Namdapha</div>  <div class="house-item">Nilgiri</div>
+
+        <div class="house-item">Pichavaram</div> <div class="house-item">Saranda</div>
+        <div class="house-item">Sundarbans</div> <div class="house-item">Wayanad</div>
+      </div>
+    </div>
+
+    <div class="community-section">
+      <p>Explore all houses and student societies here.</p>
+      <a class="link-btn" href="https://linktr.ee/studentactivitiesiitmbs" target="_blank">Student Activities Portal</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      Follow us:
+      <a href="https://www.instagram.com/sundarbansiitm/" target="_blank">Instagram</a> |
+      <a href="https://www.linkedin.com/company/sundarbans-iitm/" target="_blank">LinkedIn</a>
+    </p>
+
+    <p>
+      Report issues:
+      <a href="mailto:sundarbans-webad@ds.study.iitm.ac.in">sundarbans-webad@ds.study.iitm.ac.in</a>
+    </p>
+  </footer>
+
+</body>
+</html>

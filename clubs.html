@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Clubs — Sundarbans House, IIT Madras</title>
+<link rel="icon" href="images/sundarbans2 (1).png" />
+<style>
+  :root{
+    --bg:#000;
+    --card:#0e0e0e;
+    --muted:#bfbfbf;
+    --gold:#f0c04e;
+    --gold-2:#a97925;
+    --glass: rgba(255,255,255,0.03);
+    --accent-shadow: 0 8px 30px rgba(240,192,78,0.06);
+    --radius:12px;
+    --container-max:1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* header */
+  header{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 28px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:52px;border-radius:8px}
+  .brand h1{font-size:20px;margin:0;color:var(--gold);letter-spacing:0.6px}
+  nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:500}
+  nav a:hover{color:var(--gold)}
+
+  /* hero */
+  .hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:86px 18px;
+    background: url("images/Mountain.jpg") center/cover no-repeat fixed;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.4),rgba(0,0,0,0.7));
+  }
+  .hero-inner{
+    position:relative;z-index:2;max-width:var(--container-max);width:100%;padding:32px;
+    color:#fff;
+  }
+  .hero h2{margin:0;font-size:34px;color:var(--gold);letter-spacing:0.6px}
+  .hero p{margin:10px 0 0;color:#e6e6e6;font-size:18px;opacity:0.95}
+
+  /* container */
+  .container{max-width:var(--container-max);margin:40px auto;padding:0 20px}
+
+  /* controls */
+  .controls{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+  }
+  .search{
+    display:flex;align-items:center;background:var(--glass);border-radius:999px;padding:8px 12px;gap:8px;
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .search input{background:transparent;border:0;color:#fff;outline:0;padding:8px;width:320px;min-width:140px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{
+    background:#111;border:1px solid rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;color:var(--muted);
+    cursor:pointer;font-weight:600;font-size:13px;transition:all .18s;
+  }
+  .chip.active{background:linear-gradient(90deg,var(--gold),var(--gold-2));color:#0a0a0a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,120,30,0.12)}
+  .tiny{font-size:13px;color:var(--muted)}
+
+  /* grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+  }
+
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow:var(--accent-shadow);
+    display:flex;flex-direction:column;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(240,192,78,0.12)}
+
+  .card-media{
+    height:160px;background:#151515;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .card-media img{width:100%;height:100%;object-fit:cover}
+
+  .card-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px}
+  .card-title{font-weight:700;color:var(--gold);font-size:16px}
+  .card-desc{color:var(--muted);font-size:14px;line-height:1.4;flex:1}
+  .card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .tag{background:#0b0b0b;border:1px solid rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+  .card-actions{display:flex;gap:8px;align-items:center;justify-content:space-between;padding-top:6px}
+
+  .btn{
+    background:linear-gradient(90deg,var(--gold),var(--gold-2));
+    color:#000;padding:9px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;
+    box-shadow:0 8px 22px rgba(160,120,30,0.12);
+  }
+  .ghost{
+    background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600
+  }
+
+  /* empty state */
+  .empty{padding:36px;border-radius:12px;text-align:center;background:#070707;color:var(--muted);border:1px dashed rgba(255,255,255,0.03)}
+
+  /* modal */
+  .modal{
+    position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8));
+    z-index:9999;padding:24px;
+  }
+  .modal.show{display:flex}
+  .dialog{
+    width:100%;max-width:900px;background:linear-gradient(180deg,#0f0f0f,#060606);border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.04);
+    display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;
+  }
+  .dialog-media{height:420px;border-radius:10px;overflow:hidden;background:#000}
+  .dialog-media img{width:100%;height:100%;object-fit:cover}
+  .dialog-content h3{margin:0;color:var(--gold);font-size:20px}
+  .dialog-content p{color:var(--muted);margin-top:10px;line-height:1.6}
+  .dialog-content .meta{margin-top:12px;color:var(--muted);font-size:14px}
+  .dialog-side{padding:12px;background:rgba(255,255,255,0.02);border-radius:10px}
+  .close{background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer;font-size:18px;float:right}
+
+  /* footer */
+  footer{padding:40px 18px;text-align:center;color:var(--muted);font-size:14px;margin-top:40px}
+  footer a{color:var(--gold);text-decoration:none}
+
+  /* small screens */
+  @media (max-width:880px){
+    .dialog{grid-template-columns:1fr;max-height:calc(100vh - 80px);overflow:auto}
+    .dialog-media{height:260px}
+    .hero h2{font-size:30px}
+    .hero p{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="images/sundarbans2 (1).png" alt="Sundarbans logo">
+    <h1>Sundarbans</h1>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="clubs.html">Clubs</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="team.html">Team</a>
+    <a href="#">Resources</a>
+  </nav>
+</header>
+
+<section class="hero" aria-hidden="false">
+  <div class="hero-inner">
+    <h2>Clubs & Communities - Sundarbans House</h2>
+    <p>Find your people. Code together. Argue better. Build robots. Play tournaments. Read poetry. Join a micro-community.</p>
+  </div>
+</section>
+
+<main class="container">
+
+  <div class="controls" role="region" aria-label="search and filters">
+    <div class="search" aria-hidden="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.8"><path d="M21 21l-4.35-4.35" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input id="search" placeholder="Search clubs — e.g. coding, debate, robotics" aria-label="Search clubs">
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="chips" id="chips" aria-hidden="false">
+        <div class="chip active" data-filter="all">All</div>
+        <div class="chip" data-filter="tech">Tech</div>
+        <div class="chip" data-filter="gaming">Gaming</div>
+        <div class="chip" data-filter="arts">Arts</div>
+        <div class="chip" data-filter="general">General</div>
+      </div>
+      <div class="tiny">Showing <span id="count">0</span> clubs</div>
+    </div>
+  </div>
+
+  <div id="grid" class="grid" aria-live="polite">
+    <!-- cards inserted by JS -->
+  </div>
+
+  <div id="empty" class="empty" style="display:none">No clubs match your search — try clearing filters.</div>
+
+</main>
+
+<!-- modal -->
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="dialog" role="document">
+    <div class="dialog-media"><img id="modalImg" src=""></div>
+    <div class="dialog-content">
+      <button class="close" id="closeModal" aria-label="close">✕</button>
+      <h3 id="modalTitle">Club title</h3>
+      <p id="modalDesc">Longer description goes here. purpose, regular activities, how to join, contact.</p>
+      <div class="meta" id="modalMeta"></div>
+      <div style="margin-top:16px">
+        <a id="modalJoin" class="btn" href="#">Join / Contact</a>
+        <button id="modalShare" class="ghost" title="Copy join info">Copy info</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Need to add a club or update info? <a href="mailto:sundarbans-webad@ds.study.iitm.ac.in">sundarbans-webad@ds.study.iitm.ac.in</a>
+</footer>
+
+<script>
+/* -- club data (easy to edit) -- 
+   Replace image values with existing files in images/
+*/
+const clubsData = [
+  {
+    id:"coding-tech",
+    name:"Coding & Tech CHG || Sundarbans House IITM",
+    img:"images/Python odyssey.jpg",
+    tags:["tech","coding"],
+    short:"Workshops, mini-hackathons, peer code reviews, project nights.",
+    details:"Hands-on sessions, weekly challenges, mentorship and project showcases. Open to all levels.",
+    contact:"discord.gg/yourlink"
+  },
+  {
+    id:"debate",
+    name:"Debate & Oratory Club",
+    img:"images/Dinkar ki Pratiksha.jpg",
+    tags:["arts","general"],
+    short:"Formal debates, open mics, argument clinics and speech practice.",
+    details:"We run monthly debates, speaker trainings and inter-house tournaments.",
+    contact:"email: debate@sundarbans.iitm"
+  },
+  {
+    id:"robotics",
+    name:"Sundarbans Robotics CHG || Sundarbans House IITM",
+    img:"images/24hr- hackthon.jpg",
+    tags:["tech","general"],
+    short:"Robot build nights, simulation, ROS workshops and competitions.",
+    details:"Projects range from line-followers to ROS-powered navigation stacks. Hardware help available.",
+    contact:"@sundarbans_robotics"
+  },
+  {
+    id:"space",
+    name:"Space Exploration Club",
+    img:"images/Cybersecurity.jpg",
+    tags:["tech","general"],
+    short:"Astro talks, mission breakdowns, amateur rocketry discussions.",
+    details:"Weekly sessions about missions, astronomy nights, and team projects on satellite systems.",
+    contact:"space@sundarbans.iitm"
+  },
+  {
+    id:"sahitya",
+    name:"Sahitya Sangam",
+    img:"images/Photography.jpg",
+    tags:["arts"],
+    short:"Poetry slams, writing circles, translation sessions.",
+    details:"Monthly readings and collaborative zines. All writing styles welcome.",
+    contact:"sahitya@sundarbans"
+  },
+  {
+    id:"chess",
+    name:"Sundarbans Chess",
+    img:"images/Republic day photography.jpg",
+    tags:["general","gaming"],
+    short:"Casual play, rated ladders, coaching sessions.",
+    details:"Weekly evenings for rapid and blitz games, coaching for beginners and intermediate.",
+    contact:"chess@sundarbans"
+  },
+  {
+    id:"bgmi",
+    name:"Sundarbans bgmi",
+    img:"images/Football.jpg",
+    tags:["gaming"],
+    short:"Casual squads, weekly scrims, tournament coordination.",
+    details:"Organized squads, practice schedules and in-house tournaments.",
+    contact:"bgmi-leads"
+  },
+  {
+    id:"freefire",
+    name:"Sundarbans free fire",
+    img:"images/Navratri.jpg",
+    tags:["gaming"],
+    short:"Friendly matches, coaching and event nights.",
+    details:"Teams formed for community tournaments and online ladders.",
+    contact:"freefire-leads"
+  },
+  {
+    id:"valorant",
+    name:"Sundarbans Valorant",
+    img:"images/Shakti.jpg",
+    tags:["gaming"],
+    short:"Team-based practice, VOD review and tournament play.",
+    details:"Competitive team coordination and scrim nights for skill growth.",
+    contact:"valorant-leads"
+  }
+];
+
+/* DOM refs */
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const chips = document.getElementById('chips');
+const count = document.getElementById('count');
+const empty = document.getElementById('empty');
+
+/* render cards */
+function renderList(list){
+  grid.innerHTML = '';
+  if(!list.length){ empty.style.display='block'; count.textContent=0; return }
+  empty.style.display='none';
+  count.textContent = list.length;
+  list.forEach(club=>{
+    const card = document.createElement('article');
+    card.className='card';
+    card.innerHTML = `
+      <div class="card-media"><img loading="lazy" src="${club.img}" alt="${club.name}"></div>
+      <div class="card-body">
+        <div class="card-title">${club.name}</div>
+        <div class="card-desc">${club.short}</div>
+        <div class="card-tags">${club.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="card-actions">
+          <button class="btn view" data-id="${club.id}">View</button>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button class="ghost" data-id="${club.id}">Members</button>
+          </div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  // attach view listeners
+  document.querySelectorAll('.view').forEach(btn=>{
+    btn.addEventListener('click', ()=> openModal(clubsData.find(c=>c.id===btn.dataset.id)));
+  });
+}
+
+/* filters */
+let activeFilter = 'all';
+chips.addEventListener('click', e=>{
+  const chip = e.target.closest('.chip');
+  if(!chip) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  activeFilter = chip.dataset.filter;
+  update();
+});
+
+/* search */
+search.addEventListener('input', ()=> update());
+
+function update(){
+  const q = search.value.trim().toLowerCase();
+  let result = clubsData.filter(c=>{
+    const matchQ = !q || (c.name+c.short+c.tags.join(' ')+c.details).toLowerCase().includes(q);
+    const matchFilter = activeFilter === 'all' || c.tags.includes(activeFilter);
+    return matchQ && matchFilter;
+  });
+  renderList(result);
+}
+
+/* modal logic */
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalMeta = document.getElementById('modalMeta');
+const modalJoin = document.getElementById('modalJoin');
+const closeModal = document.getElementById('closeModal');
+
+function openModal(club){
+  modalImg.src = club.img;
+  modalTitle.textContent = club.name;
+  modalDesc.textContent = club.details;
+  modalMeta.innerHTML = `<div>Tags: ${club.tags.join(', ')}</div><div style="margin-top:8px;color:var(--muted)">Contact: ${club.contact}</div>`;
+  modalJoin.href = '#';
+  modalJoin.onclick = (e)=>{ e.preventDefault(); navigator.clipboard?.writeText(club.contact).then(()=> alert('Contact copied to clipboard')) };
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function close(){
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+closeModal.addEventListener('click', close);
+modal.addEventListener('click', (e)=>{ if(e.target===modal) close(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
+
+/* init */
+renderList(clubsData);
+count.textContent = clubsData.length;
+</script>
+</body>
+</html>
